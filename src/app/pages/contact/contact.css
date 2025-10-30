@@ -1,0 +1,190 @@
+/* --- VARIABLES & STYLES GLOBAUX --- */
+:root {
+  --blue: #0d1b2a;
+  --dark-gray: #1b2a44;
+  --yellow: #fdb912;
+  --dark-yellow: #e0a800;
+  --white: #ffffff;
+  --gray: #f5f5f5;
+  --black: #000000;
+}
+
+
+/* --- 1. HÉROS DE LA PAGE CONTACT --- */
+.contact-hero {
+  position: relative;
+  padding: 5rem 2rem;
+  text-align: center;
+  color: var(--white);
+  background-color: var(--blue);
+  background-image: url('/assets/images/contact/contact-hero-bg.jpg'); /* Ajoute une image de fond subtile */
+  background-size: cover;
+  background-position: center;
+}
+
+.contact-hero__overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(13, 27, 42, 0.8);
+}
+
+.contact-hero__content {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-hero__title {
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.contact-hero__subtitle {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+
+/* --- 2. CONTENU PRINCIPAL (FORM + INFO) --- */
+.contact-main {
+  padding: 5rem 2rem;
+  background-color: var(--blue);
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr; /* Le formulaire est plus large */
+  gap: 4rem;
+}
+
+/* --- Partie Formulaire --- */
+.contact-form-wrapper {
+  background-color: var(--dark-gray);
+  padding: 3rem;
+}
+
+.form-title, .info-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--yellow);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: var(--gray);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: var(--blue);
+  border: 2px solid transparent;
+  color: var(--white);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--yellow);
+}
+
+textarea {
+  resize: vertical; /* Permet de redimensionner verticalement */
+}
+
+.cta-button {
+  background-color: var(--yellow);
+  color: var(--blue);
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: var(--dark-yellow);
+}
+
+
+/* --- Partie Informations --- */
+.info-block {
+  margin-bottom: 2rem;
+}
+
+.info-block h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  border-left: 3px solid var(--yellow);
+  padding-left: 1rem;
+}
+
+.info-block p {
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+.info-block a {
+  color: var(--yellow);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.info-block a:hover {
+  opacity: 0.8;
+}
+
+.map-wrapper {
+  margin-top: 2rem;
+  filter: grayscale(100%) invert(90%); /* Style "nuit" pour la carte */
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.map-wrapper:hover {
+  opacity: 1;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 250px;
+}
+
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .contact-container {
+    grid-template-columns: 1fr; /* Passe sur une seule colonne */
+  }
+  .contact-info-wrapper {
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-hero__title {
+    font-size: 2.2rem;
+  }
+}

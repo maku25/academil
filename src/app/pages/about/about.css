@@ -1,0 +1,330 @@
+/* Style de titre de section réutilisable */
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  color: var(--yellow);
+  text-transform: uppercase;
+}
+
+/* --- 1. HÉROS DE LA PAGE --- */
+/* MODIFIÉ : On prépare le conteneur pour l'image en fond */
+.about-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  padding: 2rem;
+  text-align: center;
+  color: #fff;
+  overflow: hidden; /* Empêche l'image de déborder */
+}
+
+/* NOUVEAU : Le style pour la balise <img> qui sert de fond */
+.about-hero__background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Place l'image derrière tout */
+}
+
+.about-hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(13, 27, 42, 0.8), rgba(13, 27, 42, 0.5));
+  z-index: -1; /* L'overlay vient aussi derrière le contenu */
+}
+
+.about-hero__content {
+  position: relative;
+  z-index: 1; /* Le contenu est au premier plan */
+  max-width: 900px;
+}
+
+.about-hero__title {
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.about-hero__title .highlight {
+  background: linear-gradient(45deg, #fdb912, #ffcd5a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.about-hero__subtitle {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+/* --- 2. HISTOIRE & EXPERTISE --- */
+.about-story {
+  padding: 5rem 2rem;
+  background-color: var(--blue);
+  position: relative;
+}
+
+.about-story::before {
+  content: '';
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: calc(100% - 10rem);
+  background: linear-gradient(to bottom, transparent, var(--accent-color), transparent);
+  opacity: 0.3;
+}
+
+.story-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+}
+
+.story-container.expertise-part {
+  margin-top: 5rem;
+}
+
+.story-content .section-title {
+  text-align: left;
+}
+
+.story-content p {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.story-content p strong {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+.story-content a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 700;
+  transition: opacity 0.3s ease;
+}
+.story-content a:hover {
+  opacity: 0.8;
+}
+
+.story-image-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: 3px solid rgba(253, 185, 18, 0.5);
+  padding: 8px;
+  background-color: var(--secondary-color);
+}
+
+.story-container.expertise-part .story-content {
+  order: 2;
+}
+
+/* --- 3. PHILOSOPHIE --- */
+.about-philosophy {
+  padding: 5rem 2rem;
+  background-color: var(--secondary-color);
+}
+
+.philosophy-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.philosophy-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.philosophy-card {
+  background-color: var(--blue);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  border: 1px solid transparent;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  overflow: hidden;
+}
+
+.philosophy-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--accent-color);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.philosophy-card:hover {
+  transform: translateY(-10px);
+  background-color: var(--secondary-color);
+}
+
+.philosophy-card:hover::before {
+  opacity: 1;
+}
+
+.philosophy-card__icon {
+  color: var(--yellow);
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.5rem auto;
+  background-color: rgba(27, 42, 68, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+.philosophy-card__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.philosophy-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.philosophy-card p {
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* --- 4. CERTIFICATIONS --- */
+.about-credentials {
+  padding: 5rem 2rem;
+  background-color: var(--blue);
+}
+
+.credentials-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--secondary-color);
+  padding: 3rem;
+  border-left: 4px solid var(--accent-color);
+}
+
+.credentials-content .section-title {
+  margin-bottom: 2rem;
+}
+
+.credentials-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.credentials-content li {
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease, padding-left 0.3s ease;
+  text-align: left;
+}
+
+.credentials-content li:last-child {
+  border-bottom: none;
+}
+
+.credentials-content li:hover {
+  background-color: rgba(253, 185, 18, 0.05);
+  padding-left: 1.5rem;
+}
+
+.credentials-content .highlight {
+  color: var(--yellow);
+  margin-right: 15px;
+  transition: transform 0.3s ease;
+}
+
+.credentials-content li:hover .highlight {
+  transform: scale(1.2);
+}
+
+.about-cta {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+.about-cta h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.about-cta p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.about-cta button {
+  background-color: var(--yellow);
+  color: var(--blue);
+  padding: 1rem 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.about-cta button:hover {
+  background-color: var(--dark-yellow);
+  transform: scale(1.05);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .story-container {
+    grid-template-columns: 1fr;
+  }
+  .story-container.expertise-part .story-content {
+    order: 0;
+  }
+  .story-image-wrapper {
+    margin-bottom: 2rem;
+  }
+  .story-content .section-title {
+    text-align: center;
+  }
+  .about-story::before {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title, .about-cta h2 {
+    font-size: 2rem;
+  }
+  .about-hero__title {
+    font-size: 2.2rem;
+  }
+}

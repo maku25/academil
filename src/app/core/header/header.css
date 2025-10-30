@@ -1,0 +1,173 @@
+.site-header {
+  /* MODIFIÉ : Le fond est transparent par défaut */
+  background-color: transparent; 
+  padding: 1.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  /* MODIFIÉ : L'ombre est retirée par défaut */
+  box-shadow: none; 
+  /* MODIFIÉ : On ajoute background-color et box-shadow à la transition pour un effet fluide */
+  transition: padding 0.4s ease, transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Style quand on a commencé à scroller (header minimisé) */
+.site-header.scrolled {
+  padding: 0.75rem 2rem;
+  /* NOUVEAU : Le fond et l'ombre n'apparaissent QUE lorsqu'on a scrollé */
+  background-color: var(--blue);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Style quand on scroll vers le bas (header caché) */
+.site-header.scrolled-down {
+  transform: translateY(-100%);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--white);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.header-logo .highlight {
+  color: var(--yellow);
+}
+
+/* --- Navigation principale --- */
+.header-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2.5rem;
+}
+
+.header-nav a {
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.header-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.header-nav a:hover,
+.header-nav a.active {
+  color: var(--yellow);
+}
+
+.header-nav a:hover::after,
+.header-nav a.active::after {
+  transform: scaleX(1);
+}
+
+.header-cta {
+  background-color: var(--yellow);
+  color: var(--blue);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.header-cta:hover {
+  background-color: var(--dark-yellow);
+  transform: scale(1.05);
+}
+
+/* --- Menu Hamburger pour mobile --- */
+.header-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.header-menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: var(--white);
+  margin: 5px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .header-nav,
+  .header-cta {
+    display: none;
+  }
+
+  .header-menu-toggle {
+    display: block;
+  }
+
+  /* Style du menu quand il est ouvert */
+  .site-header.menu-open .header-nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(13, 27, 42, 0.98);
+    backdrop-filter: blur(5px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .site-header.menu-open .header-nav ul {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .site-header.menu-open .header-nav a {
+    font-size: 1.8rem;
+  }
+
+  /* Animation du bouton hamburger en croix (X) */
+  .site-header.menu-open .header-menu-toggle span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .site-header.menu-open .header-menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .site-header.menu-open .header-menu-toggle span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}

@@ -1,0 +1,18 @@
+<section class="logo-carousel-component" appAnimateOnScroll>
+  <h2 class="section-title">ILS M'ONT FAIT <span class="underline-highlight">CONFIANCE</span></h2>
+
+  <div class="logo-carousel__container">
+    <div class="logo-carousel__slider">
+      <div *ngFor="let item of doubledItems" class="logo-carousel__item">
+        <app-review-card 
+          [type]="item.type"
+          [imageSrc]="item.imageSrc"
+          [altText]="item.altText"
+          [rating]="item.rating"
+          [text]="item.text"
+          [author]="item.author">
+        </app-review-card>
+      </div>
+    </div>
+  </div>
+</section>
