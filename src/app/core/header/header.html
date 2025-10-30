@@ -1,0 +1,27 @@
+<header class="site-header" appShrinkingHeader [class.menu-open]="isMenuOpen">
+  <div class="header-container">
+    
+    <a routerLink="/" class="header-logo" (click)="closeMenu()">
+      Acad<span class="highlight">Emil</span>
+    </a>
+
+    <nav class="header-nav">
+      <ul>
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Accueil</a></li>
+        <li><a routerLink="/services" routerLinkActive="active" (click)="closeMenu()">Services</a></li>
+        <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">À Propos</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a></li>
+      </ul>
+    </nav>
+
+    <button class="header-cta" routerLink="/contact">
+      Réserver
+    </button>
+
+    <button class="header-menu-toggle" (click)="toggleMenu()" aria-label="Ouvrir le menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>

@@ -1,0 +1,542 @@
+.highlight {
+  color: var(--yellow);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  color: var(--accent-color);
+  text-transform: uppercase;
+}
+
+@keyframes subtleZoom {
+  0% { transform: scale(1.05); }
+  100% { transform: scale(1.1); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-15px); }
+  60% { transform: translateY(-7px); }
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+[appAnimateOnScroll] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+[appAnimateOnScroll].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* --- 1. SECTION HÉROS --- */
+.home-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  padding: 2rem;
+  text-align: center;
+  color: var(--white);
+  overflow: hidden;
+}
+
+.home-hero__img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+}
+
+.home-hero__img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  animation: subtleZoom 20s infinite alternate ease-in-out;
+}
+
+.home-hero__overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle, rgba(13, 27, 42, 0.6) 0%, rgba(13, 27, 42, 0.85) 100%);
+  z-index: 2;
+}
+
+.home-hero__content {
+  position: relative;
+  z-index: 3;
+  max-width: 900px;
+}
+
+.home-hero__content > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.home-hero__content.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.home-hero__content.is-visible .home-hero__subtitle { transition-delay: 0.2s; }
+.home-hero__content.is-visible .home-hero__cta { transition-delay: 0.4s; }
+
+.home-hero__title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.home-hero__subtitle {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+  color: var(--text-color);
+}
+.home-hero__cta {
+  background-color: var(--yellow);
+  color: var(--black);
+  padding: 1rem 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.home-hero__cta .arrow { transition: transform 0.3s ease; }
+.home-hero__cta:hover {
+  background-color: var(--dark-yellow);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(253, 185, 18, 0.5);
+}
+.home-hero__cta:hover .arrow { transform: translateX(5px); }
+
+.home-hero::after {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+  z-index: 3;
+  opacity: 0.7;
+  animation: bounce 2s infinite 2s;
+}
+
+
+/* --- 2. BARRE DE CONFIANCE (SIMPLIFIÉE) --- */
+.trust-bar {
+  background-color: var(--secondary-color);
+  padding: 3rem 2rem;
+}
+.trust-bar__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.trust-bar__item {
+  text-align: center;
+  position: relative;
+}
+.trust-bar__item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60%;
+  background: linear-gradient(to bottom, transparent, var(--primary-color), transparent);
+}
+.metric-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--yellow);
+  line-height: 1;
+}
+.metric-label {
+  font-size: 0.9rem;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.75rem;
+}
+
+
+/* --- 3. INTRODUCTION DU COACH --- */
+.coach-intro {
+  padding: 6rem 2rem;
+  background-color: var(--secondary-color);
+}
+.coach-intro__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+}
+.coach-intro__image-wrapper {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+.coach-intro__image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.coach-intro__text-content .section-title {
+  text-align: left;
+}
+.coach-intro__text-content .section-subtitle {
+  text-align: left;
+  margin: 0 0 2rem 0;
+  max-width: 100%;
+}
+.cta-link {
+  color: var(--yellow);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.cta-link:hover {
+  transform: translateX(10px);
+}
+.cta-link .arrow {
+  margin-left: 0.5rem;
+  transition: margin-left 0.3s ease;
+}
+.cta-link:hover .arrow {
+  margin-left: 1rem;
+}
+
+
+/* --- 4. DOMAINES D'EXPERTISE --- */
+.expertise {
+  padding: 6rem 2rem;
+  background-color: var(--primary-color);
+  position: relative;
+  overflow: hidden;
+}
+.expertise::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 100%;
+  background: radial-gradient(circle, var(--secondary-color) 0%, transparent 70%);
+  opacity: 0.5;
+}
+.expertise__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+.expertise-item {
+  background-color: var(--secondary-color);
+  padding: 3rem 2rem;
+  text-align: center;
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+.expertise-item:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+.expertise-item__icon {
+  margin-bottom: 2rem;
+  transition: transform 0.4s ease;
+}
+.expertise-item__icon img,
+.expertise-item__icon svg {
+  width: 60px;
+  height: 60px;
+  color: var(--accent-color);
+  filter: invert(80%) sepia(27%) saturate(2476%) hue-rotate(350deg) brightness(105%) contrast(97%);
+}
+.expertise-item:hover .expertise-item__icon {
+  transform: scale(1.1);
+}
+.expertise-item__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--white);
+  text-transform: uppercase;
+  margin: 0 0 1rem 0;
+}
+.expertise-item__description {
+  color: var(--text-color-dark);
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-top: auto;
+}
+
+/* --- 5. CARROUSEL "ILS M'ONT FAIT CONFIANCE" --- */
+.logo-carousel {
+  padding: 4rem 2rem;
+  background-color: var(--primary-color);
+  border-top: 1px solid var(--secondary-color);
+}
+.logo-carousel .section-title {
+  margin-bottom: 2.5rem;
+}
+.logo-carousel__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+.logo-carousel__slider {
+  display: flex;
+  width: fit-content;
+  animation: scroll 20s linear infinite;
+}
+.logo-carousel__item {
+  flex-shrink: 0;
+  width: 200px;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo-carousel__item img {
+  height: 60px;
+  width: 100%;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(1.5) contrast(0.8);
+  opacity: 0.8;
+  transition: all 0.4s ease;
+}
+.logo-carousel__container:hover .logo-carousel__slider {
+  animation-play-state: paused;
+}
+.logo-carousel__item:hover img {
+  filter: grayscale(0%) brightness(1) contrast(1);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+
+/* --- 6. APERÇU DES SERVICES --- */
+.services-overview {
+  padding: 6rem 2rem;
+  background-color: var(--secondary-color);
+}
+.services-overview__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.services-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.service-card {
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.service-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.service-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.service-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1.5rem 1rem;
+  text-transform: uppercase;
+  color: var(--accent-color);
+}
+.service-card p {
+  padding: 0 1.5rem 2rem 1.5rem;
+  color: var(--text-color-dark);
+  line-height: 1.6;
+}
+.services-overview__cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+.services-overview__cta button {
+  background-color: transparent;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.services-overview__cta button:hover {
+  background-color: var(--accent-color);
+  color: var(--black);
+}
+
+/* --- 7. TÉMOIGNAGES --- */
+.testimonials {
+  padding: 6rem 2rem;
+  background-color: var(--primary-color);
+}
+.testimonials__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+.testimonial-card {
+  background-color: var(--secondary-color);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: 4px solid var(--accent-color);
+}
+.testimonial-card::before {
+  content: '“';
+  font-family: serif;
+  font-size: 5rem;
+  color: var(--accent-color);
+  line-height: 1;
+  opacity: 0.5;
+}
+.testimonial-card__quote {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-color-dark);
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+.testimonial-card__author {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--primary-color);
+}
+.author-name {
+  display: block;
+  font-weight: 700;
+  color: var(--white);
+}
+.author-result {
+  display: block;
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* --- 8. CTA FINAL --- */
+.final-cta {
+  padding: 6rem 2rem;
+  background-color: var(--accent-color);
+  text-align: center;
+  color: var(--black);
+}
+.final-cta__container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.final-cta h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.final-cta p {
+  font-size: 1.2rem;
+  margin: 1rem 0 2rem 0;
+}
+.final-cta button {
+  background-color: var(--black);
+  color: var(--accent-color);
+  padding: 1rem 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 0.3s ease;
+}
+.final-cta button:hover {
+  transform: scale(1.05);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .coach-intro__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .coach-intro__image-wrapper {
+    order: -1;
+    margin-bottom: 2rem;
+    width: 80%;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .coach-intro__text-content .section-title,
+  .coach-intro__text-content .section-subtitle {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title, .final-cta h2 {
+    font-size: 2rem;
+  }
+  .home-hero__title {
+    font-size: 2.5rem;
+  }
+  .home-hero__subtitle {
+    font-size: 1.1rem;
+  }
+  .trust-bar__container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .trust-bar__item:not(:last-child)::after {
+    display: none;
+  }
+}

@@ -1,0 +1,97 @@
+<section class="home-hero">
+  <div class="home-hero__img">
+    <img src="/img/home/home_img1.webp" alt="Le coach Émile en pleine séance de musculation à Nancy">
+  </div>
+  <div class="home-hero__overlay"></div>
+  <div class="home-hero__content" appAnimateOnScroll>
+    <h1 class="home-hero__title">
+      TRANSFORME TON 
+      <span class="highlight">CORPS</span>,
+      DÉPASSE TES LIMITES.
+    </h1>
+    <p class="home-hero__subtitle">
+      Coaching personnalisé pour tous les niveaux - des premiers pas jusqu'à la haute performance.
+    </p>
+    <button class="home-hero__cta" routerLink="/services">
+      Coaching en ligne <span class="arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<section class="trust-bar" appAnimateOnScroll>
+  <div class="trust-bar__container">
+    <div class="trust-bar__item">
+      <div class="metric-number" [appCountUp]="100">+</div>
+      <div class="metric-label">Clients Satisfaits</div>
+    </div>
+    <div class="trust-bar__item">
+      <div class="metric-number" [appCountUp]="10">+</div>
+      <div class="metric-label">Années d'Expérience</div>
+    </div>
+    <div class="trust-bar__item">
+      <div class="metric-number" [appCountUp]="98">%</div>
+      <div class="metric-label">Objectifs Atteints</div>
+    </div>
+  </div>
+
+  <app-carousel-clients></app-carousel-clients>
+
+</section>
+
+<section class="coach-intro" appAnimateOnScroll>
+  <div class="coach-intro__container">
+    <div class="coach-intro__image-wrapper">
+      <img src="/img/emile.jpg" alt="Coach sportif Émile à Nancy" loading="lazy" />
+    </div>
+    <div class="coach-intro__text-content">
+      <h2 class="section-title">PLUS QU'UN COACH, TON <span class="highlight">PARTENAIRE</span> DE RÉUSSITE</h2>
+      <p class="section-subtitle">
+        Derrière chaque transformation, il y a une méthode, une écoute, et une vision à long terme.
+      </p>
+      <a class="cta-link" routerLink="/about">En savoir plus sur moi<span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="expertise" appAnimateOnScroll>
+  <div class="expertise__container">
+    <h2 class="section-title">MES DOMAINES D'<span class="highlight">EXPERTISE</span></h2>
+    <div class="expertise-grid">
+
+      <div class="expertise-item">
+        <div class="expertise-item__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M96 112c0-26.5 21.5-48 48-48s48 21.5 48 48l0 112 256 0 0-112c0-26.5 21.5-48 48-48s48 21.5 48 48l0 16 16 0c26.5 0 48 21.5 48 48l0 48c17.7 0 32 14.3 32 32s-14.3 32-32 32l0 48c0 26.5-21.5 48-48 48l-16 0 0 16c0 26.5-21.5 48-48 48s-48-21.5-48-48l0-112-256 0 0 112c0 26.5-21.5 48-48 48s-48-21.5-48-48l0-16-16 0c-26.5 0-48-21.5-48-48l0-48c-17.7 0-32-14.3-32-32s14.3-32 32-32l0-48c0-26.5 21.5-48 48-48l16 0 0-16z"/></svg>
+        </div>
+        <h3 class="expertise-item__title">Force & musculation</h3>
+        <p class="expertise-item__description">Développement de la force pure et de la masse musculaire.</p>
+      </div>
+
+      <div class="expertise-item">
+        <div class="expertise-item__icon">
+          <img src="/img/home/muscle.svg" alt="Icône Préparation Physique">
+        </div>
+        <h3 class="expertise-item__title">Préparation Physique</h3>
+        <p class="expertise-item__description">Sur Mesure (combat, préparation concours...).</p>
+      </div>
+      
+      <!--
+      <div class="expertise-item">
+        <div class="expertise-item__icon">
+          <img src="/img/home/boxe.svg" alt="Icône Sports de Combat">
+        </div>
+        <h3 class="expertise-item__title">Sports de Combat</h3>
+        <p class="expertise-item__description">Amélioration de l'endurance, de la puissance et de l'agilité.</p>
+      </div>
+      -->
+
+      <div class="expertise-item">
+        <div class="expertise-item__icon">
+          <img src="/img/home/sport.svg" alt="Icône Perte de Poids">
+        </div>
+        <h3 class="expertise-item__title">Remise En Forme & Perte de Poids</h3>
+        <p class="expertise-item__description">Programmes ciblés pour une transformation durable.</p>
+      </div>
+
+    </div>
+  </div>
+</section>

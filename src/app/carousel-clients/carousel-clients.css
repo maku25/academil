@@ -1,0 +1,63 @@
+:host {
+  --primary-color: #0d1b2a;
+  --secondary-color: #1b2a44;
+  --accent-color: #fdb912;
+  --white: #ffffff;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-carousel-component {
+  padding: 4rem 0;
+  background-color: var(--primary-color);
+  border-top: 1px solid var(--secondary-color);
+  overflow: hidden;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  color: var(--white);
+  text-transform: uppercase;
+  padding: 0 1rem;
+}
+
+.section-title .underline-highlight {
+  color: var(--accent-color);
+  display: inline-block;
+  border-bottom: 4px solid var(--accent-color);
+  padding-bottom: 8px;
+  line-height: 0.9;
+}
+
+.logo-carousel__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.logo-carousel__slider {
+  display: flex;
+  width: fit-content;
+  animation: scroll 30s linear infinite; /* Vitesse un peu ralentie */
+  will-change: transform;
+}
+
+.logo-carousel__item {
+  flex-shrink: 0;
+  width: 380px; /* Largeur de la "boîte" */
+  height: 200px; /* Hauteur de la "boîte" */
+  padding: 0 1rem;
+}
+
+.logo-carousel__container:hover .logo-carousel__slider {
+  animation-play-state: paused;
+}

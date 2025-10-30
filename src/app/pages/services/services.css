@@ -1,0 +1,268 @@
+.services-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+  background-color: var(--blue);
+  color: var(--white);
+  overflow: hidden;
+  position: relative;
+}
+
+.services-hero__image {
+  flex: 1;
+  max-width: 350px;
+  position: relative;
+  transform: translateX(50px) scale(1.05);
+  transition: transform 0.8s ease-out;
+}
+
+.services-hero__image::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0));
+  border-radius: 0; /* pas d'arrondi pour style sportif */
+}
+
+.services-hero__image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* Animation d'entrée */
+.services-hero__content,
+.services-hero__image {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideUp 0.8s forwards;
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.services-hero__content {
+  flex: 1;
+  position: relative;
+  text-align: left;
+}
+
+.services-hero__title {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.services-hero__title .highlight {
+  color: var(--yellow);
+}
+
+.services-hero__subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  color: var(--gray);
+}
+
+.services-hero__cta {
+  background-color: var(--yellow);
+  color: var(--blue);
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.services-hero__cta:hover {
+  background-color: var(--dark-yellow);
+  transform: scale(1.1);
+}
+
+/* SERVICES CARDS */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: var(--yellow);
+  text-transform: uppercase;
+}
+
+.services-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.service-card {
+  /* Style de base de la carte */
+  background-color: var(--dark-gray);
+  color: var(--white);
+  text-align: center;
+  padding: 2rem 1rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  
+  /* --- AJOUTS NÉCESSAIRES POUR LE BADGE --- */
+  position: relative; /* Indispensable pour positionner le badge à l'intérieur */
+  overflow: hidden;   /* Empêche le badge de déborder sur les autres cartes */
+}
+
+.service-card:hover {
+  box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+}
+
+.service-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.service-card__price-badge {
+  position: absolute;
+  top: 15px;
+  right: -30px; /* Commence en dehors de la carte pour l'effet de rotation */
+  background-color: var(--yellow);
+  color: var(--blue); /* Texte noir pour un contraste maximal, comme sur vos boutons */
+  padding: 8px 30px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transform: rotate(45deg); /* Le badge est incliné par défaut */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 2; /* S'assure qu'il est au-dessus de l'image */
+  /* Transition douce pour l'animation */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.service-card:hover .service-card__price-badge {
+  transform: rotate(0deg); /* Le badge se met droit */
+  right: 15px;             /* Il se positionne correctement à l'intérieur */
+}
+
+/* CTA FINAL */
+.services-cta-final {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: var(--blue);
+  color: var(--white);
+  margin-bottom: 4rem;
+}
+
+.services-cta-final button {
+  background-color: var(--yellow);
+  color: var(--blue);
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.services-cta-final button:hover {
+  background-color: var(--dark-yellow);
+  transform: scale(1.1);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .services-hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .services-hero__image {
+    max-width: 250px;
+    margin-top: -2rem;
+    transform: translateX(0) scale(1);
+  }
+  .services-hero__title {
+    font-size: 2rem;
+  }
+  .services-hero__subtitle {
+    font-size: 1rem;
+  }
+  .services-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-card__price {
+  color: #fdb912; /* On utilise la couleur d'accent */
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0.5rem 0 1rem 0; /* Espace autour du prix */
+  letter-spacing: 0.5px;
+}
+
+.service-card__price strong {
+  font-size: 2rem; /* On met en valeur le chiffre */
+  font-weight: 800;
+  margin-right: 8px;
+}
+
+/* =================================== */
+/* --- Alerte Paiement --- */
+/* =================================== */
+
+.payment-alert {
+  background-color: var(--dark-gray);
+  padding: 2rem;
+  margin: 0 auto 4rem auto; /* Marge en bas pour espacer avec la suite */
+  max-width: 1200px;
+  border-left: 5px solid var(--yellow); /* Bordure d'accent pour signifier une info importante */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.payment-alert__container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.payment-alert__icon svg {
+  width: 40px;
+  height: 40px;
+  color: var(--yellow);
+  flex-shrink: 0; /* Empêche l'icône de rétrécir */
+}
+
+.payment-alert__text {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 500;
+  color: var(--gray);
+}
+
+.payment-alert__text a {
+  color: var(--yellow);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: opacity 0.3s ease;
+}
+
+.payment-alert__text a:hover {
+  opacity: 0.8;
+}
